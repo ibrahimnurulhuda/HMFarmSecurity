@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="CoffeeCup HTML Editor (www.coffeecup.com)">
+    <meta name="dcterms.created" content="Tue, 06 Aug 2019 14:52:05 GMT">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: lightblue;
+        color: white;
+        text-align: center;
+    }
+
+    .gallery {
+        margin: 2px;
+        border: 1px solid black;
+        width: 50px;
+    }
+
+    .table th,
+    td {
+        border: 2px solid black;
+        border-collapse: collapse;
+        background: burlywood;
+    }
+
+    .button {
+        background-color: lightslategrey;
+        border: none;
+        color: WHITE;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        border-color: white;
+        box-sizing: border-box;
+    }
+
+    .button2 {
+        width: 50%
+    }
+
+    .button2 {
+        padding: 5px
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid #e7e7e7;
+        background-color: #f3f3f3;
+        border-radius: 10px;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: #666;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        border-radius: 10px;
+    }
+
+    li a:hover:not(.active) {
+        background-color: lightgreen;
+        border-radius: 10px;
+    }
+
+    .content {
+        margin: center;
+    }
+</style>
+
+<body bgcolor="lightblue">
+    <ul>
+        <li><a href="live.html">Live</a></li>
+        <li><a href="changePass.php">Change Password</a></li>
+        <li><a href="gallery.html">Back</a></li>
+        <li><a href="logout.php">Logout</a></li>
+    </ul>
+
+    <center>
+        <h1>
+            <font size="8">PICTURE</font>
+        </h1>
+    </center>
+
+    <table style="width:50%" align="center">
+        <tr>
+            <td width="50">
+                <font size="6">Picture</font>
+            </td>
+            <td width="20">
+                <font size="6">Action</font>
+            </td>
+        </tr>
+
+        <tr>
+            <center>
+                <td><img src="logo.png" width="150" height="150" /></td>
+            </center>
+            <center>
+                <td><button class="button button2">DELETE</button></td>
+            </center>
+        </tr>
+    </table>
+
+</body>
+
+</html>

@@ -1,0 +1,250 @@
+<?php
+require('config.php');
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="CoffeeCup HTML Editor (www.coffeecup.com)">
+    <meta name="dcterms.created" content="Tue, 06 Aug 2019 14:52:05 GMT">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid #e7e7e7;
+        background-color: lightpink;
+        border-radius: 0px;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: #666;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        border-radius: 10px;
+    }
+
+    li a:hover:not(.active) {
+        background-color: lightgreen;
+        border-radius: 10px;
+    }
+
+
+    .content {
+        margin: center;
+    }
+
+    .container {
+        background: url('bg1.jpg');
+        width: 100%;
+        height: 50%;
+        margin: center;
+        border-radius: 0px;
+        border-color: black;
+        box-sizing: border-box;
+        margin-top: 3px;
+        margin-bottom: 16px;
+    }
+
+    .table th,
+    td {
+        border: 2px solid white;
+        border-collapse: collapse;
+        background: #f3f3f3;
+    }
+
+    .content {
+        margin: center;
+    }
+
+	/*command picture*/
+	#myImg  {
+		border-radius: 5px;
+		cursor: pointer;
+		transition: 0.3s;
+	}
+
+	#myImg:hover {opacity: 0.7;}
+
+	.modal {
+		display: none;
+		position: fixed;
+		z-index: 1;
+		padding-top: 100px;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		background-color: rgb(0, 0, 0);
+		background-color: rgb(0,0,0,0,9);
+	}
+
+	.modal-content{
+		margin: auto;
+		display: block;
+		width: 80%;
+		max-width: 700px;
+	}
+
+	#caption {
+		margin: auto;
+		display: block;
+		width: 80%;
+		max-width: 700px;
+		text-align: center;
+		color: #ccc;
+		padding: 10px 0;
+		height: 150px;
+	}
+
+	.modal-content, #caption {
+		animation-name: zoom;
+		animation-direction: 0.6s;
+	}
+
+	@keyframes zoom {
+		from {transform: scale(0)}
+		to {transform: scale(1)}
+	}
+
+	.close {
+		position: absolute;
+		top: 15px;
+		right: 35px;
+		color: #f1f1ff;
+		font-size: 40px;
+		font-weight: bold;
+		transition: 0.3s;
+	}
+
+	.close:hover,
+	.close:focus{
+		color: #bbb;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	@media only screen and (max-width: 700px){
+		.modal-content{
+			width: 100%;
+		}
+	}
+</style>
+
+<body background="bgb.jpg" class="center">
+    <div class="container">
+        <br>
+        <center><img src="logo1.png" /> <img src="text.png" /></center><br>
+        <ul>
+            <li><a href="live.html">Live</a></li>
+            <li><a href="changePass.php">Change Password</a></li>
+            <li><a href="mainpage.php">Back</a></li>
+            <li><a href="logout.php">Logout</a></li>
+        </ul>
+    </div>
+
+    <center>
+        <h1>
+            <u>
+                <font size="6" color="white">HISTORY</font>
+            </u>
+        </h1>
+    </center>
+
+    <table style="width:70%" align="center">
+        <center>
+            <tr>
+                <td width="5%">
+                    <center><font size="5">No</font></center>
+                </td>
+                <td width="15%">
+                    <center><font size="5">Date</font></center>
+                </td>
+                <td width="15%">
+                    <center><font size="5">Time</font></center>
+                </td>
+                <td width="20%">
+                    <center><font size="5">Capture Picture</font></center>
+                </td>
+                <td width="10%">
+                    <center><font size="5">Action</font></center>
+                </td>
+            </tr>
+        </center>
+
+        <?php
+        $bil=1;
+        $sql = "SELECT * FROM time";
+        $result = $db->query($sql);
+        while ($row = $result->fetch_object()) {
+            ?>
+            <tr>
+                <center>
+                    <td><center><?php echo $bil++; ?></center></td>
+                </center>
+                <center>
+                    <td><?php echo $row->date; ?></td>
+                </center>
+                <center>
+                    <td><?php echo $row->time; ?></td>
+                </center>
+                <center>
+                    <td>
+						<center>
+							<img id="myImg" src="c.jpg" alt="c" style="width:50%; max-width: 300px">
+							<div id="myModal" class="modal">
+								<span class="close">&times;</span>
+
+								<img class="modal-content" id="imgo1">
+
+								<div id="caption"></div>
+							</div>
+						</center>
+                    </td>
+                </center>
+                <center>
+                    <td>
+                        <center><input type="image" src="delete.png" alt="submit" width="20%" height="20%"></center>
+                    </td>
+                </center>
+            </tr>
+        <?php
+        }
+        ?>
+
+    </table>
+    <script>
+	var modal = document.getElementById("myModal");
+	
+	var img = document.getElementById("myImg");
+	var modalImg = document.getElementById("imgo1");
+	var captionText = document.getElementById("caption");
+	img.onclick = function(){
+		modal.style.display = "block";
+		modalImg.src = this.src;
+		captionText.innerHTML = this.alt;
+	}
+
+	var span = document.getElementsByClassName("close")[0];
+
+	span.onclick = function(){
+		modal.style.display = "none";
+    }
+</script>
+</body>
+
+</html>
